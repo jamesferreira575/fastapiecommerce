@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Loja FastAPI</title>
+</head>
+<body>
+    <header>
+        <h1> Minha Loja FastAPI</h1>
+        <nav>
+            <a href="/">Início</a>
+            <a href="/me/painel">Painel</a>
+            <a href="/me/pedidos">Pedidos</a>
+            <a href="/me/dados">Meus Dados</a>
+            <a href="/logout">Sair</a>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        <!-- Aqui entram os conteúdos das páginas -->
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>© {{ 2025 }} - Loja FastAPI - Desenvolvido por James Ferreira</p>
+    </footer>
+</body>
+</html>

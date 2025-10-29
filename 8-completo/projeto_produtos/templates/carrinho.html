@@ -1,0 +1,31 @@
+<!--carrinho.html-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrinho</title>
+</head>
+<body>
+  <h2>Meu Carrinho</h2>
+
+{% if carrinho %}
+  <ul>
+  {% for item in carrinho %}
+    <li>{{ item.nome }} - {{ item.quantidade }} x R$ {{ item.preco }}</li>
+  {% endfor %}
+  </ul>
+
+  <p>Total: R$ {{ total }}</p>
+
+  <form action="/checkout" method="post">
+    <button type="submit">Finalizar Compra</button>
+  </form>
+{% else %}
+  <p>Seu carrinho está vazio.</p>
+{% endif %}
+
+<a href="/">Voltar à loja</a>
+
+</body>
+</html>

@@ -1,0 +1,4 @@
+#requirements.txt
+pip install fastapi uvicorn jinja2 python-multipart sqlalchemy
+pip install bcrypt==4.1.0
+pip install -U passlib

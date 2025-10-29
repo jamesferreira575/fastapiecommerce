@@ -1,0 +1,45 @@
+<!--admin.html-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Admin</title>
+</head>
+<body>
+    <h2>Gerenciamento de Produtos</h2>
+    <form action="/admin/produto" method="post" enctype="multipart/form-data">
+        <label>Nome:</label><br>
+        <input type="text" name="nome"><br>
+        <label>Preço:</label><br>
+        <input type="number" step="0.01" name="preco"><br>
+        <label>Quantidade:</label><br>
+        <input type="number" step="1" name="quantidade"><br>
+        <label>Imagem:</label><br>
+        <input type="file" name="imagem"><br><br>
+        <button type="submit">Adicionar Produto</button>
+    </form>
+    <h3>Produtos Cadastrados</h3>
+    <table border="1">
+        <tr>
+            <th>Nome</th><th>Preço</th><th>QTD</th><th>Imagem</th><th>Deletar</th><th>Editar</th>
+        </tr>
+        {% for i in produtos %}
+            <tr>
+                <td>{{i.nome}}</td>
+                <td>{{i.preco}}</td>
+                <td>{{i.quantidade}}</td>
+                <td><img src="{{url_for('static',path='uploads/'+i.imagem)}}" width="50"></td>
+                <td>
+                    <form action="/admin/produto/deletar/{{i.id}}" method="post">
+                       <button type="submit">Excluir</button> 
+                    </form>
+                </td>
+                <td>
+                    <a href="/admin/produto/editar/{{i.id}}">Editar</a>
+                </td>
+        {% endfor %}
+    </table>
+    <p><a href="/">Voltar</a></p>
+</body>
+</html>

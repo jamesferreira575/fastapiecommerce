@@ -1,0 +1,27 @@
+<!--index.html-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Produtos</title>
+</head>
+<body>
+    <h1>Catálogo de Produtos</h1>
+
+{% for produto in produtos %}
+<div>
+  <img src="{{ url_for('static', path='uploads/' + produto.imagem) }}" width="120">
+  <h3>{{ produto.nome }}</h3>
+  <p>Preço: R$ {{ produto.preco }}</p>
+  <form action="/carrinho/adicionar/{{ produto.id }}" method="post">
+    <input type="number" name="quantidade" value="1" min="1">
+    <button type="submit">Adicionar ao Carrinho</button>
+  </form>
+</div>
+<hr>
+{% endfor %}
+
+<a href="/carrinho">Ver Carrinho</a>
+</body>
+</html>

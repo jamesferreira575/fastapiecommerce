@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel do Usuário</title>
+</head>
+<body>
+    {% extends "base.html" %}
+{% block content %}
+<h2>Painel do Usuário</h2>
+<p>Bem-vindo, {{ usuario.nome }}!</p>
+<a href="/me/dados">Meus Dados</a> |
+<a href="/me/pedidos">Meus Pedidos</a>
+<hr>
+<h3>Pedidos recentes</h3>
+<ul>
+{% for pedido in pedidos %}
+  <li>Pedido #{{ pedido.id }} - {{ pedido.status }} - Total: R$ {{ pedido.total }}</li>
+{% endfor %}
+</ul>
+{% endblock %}
+</body>
+</html>

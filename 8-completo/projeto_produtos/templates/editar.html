@@ -1,0 +1,23 @@
+<!--editar.html-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Produto</title>
+</head>
+<body>
+    <h1>Editar Produto:</h1>
+        <form action="/admin/produto/atualizar/{{produto.id}}" method="post" enctype="multipart/form-data">
+            Nome: <input type="text" name="nome" value="{{produto.nome}}"required><br>
+            Preço: <input type="number" name="preco" value="{{produto.preco}}"required><br>
+            Quantidade: <input type="number" name="quantidade" value="{{produto.quantidade}}"required><br>
+            <p>Imagem atual</p>
+            <img src="{{url_for('static',path='uploads/'+ produto.imagem)}}" width="150"><br>
+            <p>Nova imagem (opcional):</p>
+            <input type="file" name="imagem"><br>
+            <button type="submit">Atualizar</button>
+        </form>
+        <a href="/admin">Voltar</a>
+</body>
+</html>
